@@ -1,4 +1,11 @@
 {
   "cleanUrls": true,
-  "trailingSlash": false
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/p/:slug*",
+      "destination": "https://verdiq-book.vercel.app/p/:slug*",
+      "permanent": false
+    }
+  ]
 }
