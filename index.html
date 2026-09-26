@@ -1,212 +1,94 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Verdiq &mdash; Software for service businesses</title>
-  <meta name="description" content="Verdiq LLC builds software for solo and small service businesses, including Verdiq Book, an SMS- and voice-first scheduling platform with automated booking confirmations and reminders.">
-  <meta property="og:title" content="Verdiq">
-  <meta property="og:description" content="Software for solo and small service businesses.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://verdiqtech.com">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Verdiq Technologies</title>
+  <meta name="description" content="Verdiq Technologies builds identity governance software for credit unions.">
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+    :root {
+      --background: oklch(0.962 0.002 30);
+      --raised: oklch(0.985 0.002 30);
+      --foreground: oklch(0.235 0.004 40);
+      --muted: oklch(0.42 0.006 40);
+      --primary: oklch(0.33 0.09 262);
+      --link: oklch(0.40 0.11 262);
+      --border: oklch(0.235 0.004 40 / 0.16);
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --background: oklch(0.21 0.004 40);
+        --raised: oklch(0.25 0.004 40);
+        --foreground: oklch(0.93 0.002 30);
+        --muted: oklch(0.72 0.005 40);
+        --primary: oklch(0.80 0.08 262);
+        --link: oklch(0.78 0.10 262);
+        --border: oklch(0.93 0.002 30 / 0.18);
+      }
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-      background: #0a0a0a;
-      color: #e8e8e8;
+      background: var(--background);
+      color: var(--foreground);
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      font-size: 17px;
       line-height: 1.6;
-      min-height: 100vh;
-      padding: 2rem 1.5rem 5rem;
       -webkit-font-smoothing: antialiased;
     }
-    .container {
-      max-width: 720px;
-      width: 100%;
-      margin: 0 auto;
-    }
-    .logo {
-      font-size: 1.5rem;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      color: #4ade80;
-      margin-bottom: 3rem;
-    }
+    main { max-width: 640px; margin: 0 auto; padding: 96px 24px 64px; }
+    header { margin-bottom: 56px; }
+    .wordmark { font-weight: 600; letter-spacing: 0.01em; font-size: 15px; color: var(--muted); text-transform: uppercase; }
     h1 {
-      font-size: 2.25rem;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      margin-bottom: 1.25rem;
-      line-height: 1.15;
-      color: #ffffff;
-    }
-    .lede {
-      font-size: 1.125rem;
-      color: #b8b8b8;
-      margin-bottom: 3.5rem;
-    }
-    h2 {
-      font-size: 0.75rem;
+      font-family: Georgia, "Times New Roman", serif;
       font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: #4ade80;
-      margin-bottom: 1rem;
+      font-size: 36px;
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+      margin: 12px 0 0;
     }
-    h3 {
-      font-size: 1.125rem;
-      font-weight: 600;
-      margin-bottom: 0.5rem;
-      color: #e8e8e8;
-    }
-    section { margin-bottom: 3.5rem; }
-    section p {
-      color: #b8b8b8;
-      margin-bottom: 1rem;
-    }
-    section p:last-child { margin-bottom: 0; }
-    section a {
-      color: #4ade80;
-      text-decoration: none;
-    }
-    section a:hover { text-decoration: underline; }
-    .card {
-      padding: 1.5rem;
-      border: 1px solid #2a2a2a;
-      border-radius: 12px;
-      margin-bottom: 1rem;
-      background: #111111;
-    }
-    .card p {
-      font-size: 0.95rem;
-      color: #a8a8a8;
-      margin: 0;
-    }
-    .card p + p { margin-top: 0.75rem; }
-    ul {
-      list-style: none;
-      padding-left: 0;
-    }
-    ul li {
-      padding: 0.5rem 0;
-      color: #b8b8b8;
-      font-size: 0.95rem;
-      position: relative;
-      padding-left: 1.25rem;
-    }
-    ul li::before {
-      content: "›";
-      position: absolute;
-      left: 0;
-      color: #4ade80;
-      font-weight: 700;
-    }
-    .mono {
-      font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
-      font-size: 0.9em;
-      background: #1a1a1a;
-      padding: 0.1em 0.35em;
-      border-radius: 4px;
-      color: #d8d8d8;
-    }
-    .small {
-      font-size: 0.85rem;
-      color: #888;
-      line-height: 1.7;
-    }
-    .cta {
-      display: inline-block;
-      margin-top: 0.75rem;
-      padding: 0.625rem 1.125rem;
-      background: #4ade80;
-      color: #0a0a0a;
-      font-weight: 600;
-      font-size: 0.9rem;
-      border-radius: 8px;
-      text-decoration: none;
-    }
-    .cta:hover {
-      background: #6ee896;
-      text-decoration: none !important;
-    }
-    .contact {
-      margin-top: 3rem;
-      padding-top: 2rem;
-      border-top: 1px solid #2a2a2a;
-      font-size: 0.9rem;
-      color: #888;
-      line-height: 1.7;
-    }
-    .contact a {
-      color: #4ade80;
-      text-decoration: none;
-    }
-    .contact a:hover { text-decoration: underline; }
-    @media (max-width: 480px) {
-      h1 { font-size: 1.75rem; }
-      body { padding: 1.5rem 1rem 4rem; }
-    }
+    p { margin: 0 0 20px; }
+    .muted { color: var(--muted); }
+    section { padding: 28px 0; border-top: 1px solid var(--border); }
+    h2 { font-size: 13px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); margin: 0 0 12px; }
+    a { color: var(--link); text-decoration: underline; text-underline-offset: 3px; }
+    a:hover { color: var(--primary); }
+    dl { margin: 0; display: grid; grid-template-columns: max-content 1fr; gap: 8px 20px; }
+    dt { color: var(--muted); }
+    dd { margin: 0; }
+    footer { margin-top: 56px; padding-top: 20px; border-top: 1px solid var(--border); font-size: 14px; color: var(--muted); display: flex; flex-wrap: wrap; gap: 8px 20px; justify-content: space-between; }
+    footer a { color: inherit; }
+    @media (max-width: 480px) { main { padding-top: 64px; } h1 { font-size: 30px; } dl { grid-template-columns: 1fr; gap: 4px; } dt { margin-top: 8px; } }
   </style>
 </head>
 <body>
-  <main class="container">
-    <div class="logo">Verdiq</div>
+  <main>
+    <header>
+      <div class="wordmark">Verdiq Technologies</div>
+      <h1>Identity governance software for credit unions.</h1>
+    </header>
 
-    <h1>Software for service businesses.</h1>
-    <p class="lede">Verdiq LLC builds tools that help solo and small service operators run their businesses with less friction &mdash; from finding work to managing clients and getting paid.</p>
+    <p>
+      We build software that helps credit unions manage who has access to what across Active Directory,
+      Microsoft Entra ID and the systems their staff use every day, and produce the evidence examiners ask for.
+    </p>
+    <p class="muted">
+      Our first product is in a private pilot. If you'd like to know more, get in touch.
+    </p>
 
-    <section id="about">
-      <h2>About Verdiq</h2>
-      <p>Verdiq LLC is a software company based in the United States. We build operational tools for independent service providers &mdash; cleaners, landscapers, dog walkers, tutors, mobile detailers, and other solo operators whose business runs on a phone in their pocket. Our products replace the patchwork of scheduling apps, spreadsheets, and missed text messages that most solo pros piece together to keep a calendar full and clients happy.</p>
-    </section>
-
-    <section id="products">
-      <h2>Products</h2>
-
-      <div class="card">
-        <h3>Verdiq Book</h3>
-        <p>An SMS- and voice-first scheduling platform for solo service providers. Clients book by texting or calling the provider's dedicated Verdiq number &mdash; no apps to install, no web forms to fill out. The platform handles the conversation, surfaces requests for the provider to confirm with a single SMS reply, and runs the rest of the booking lifecycle automatically.</p>
-        <p>Features include booking confirmations, automated reminders 24 hours and 2 hours before each appointment, reschedule and cancellation notices, recurring bookings, vacation cascade with auto-reschedule, and a public booking page each provider can share on their bio, business card, or QR code.</p>
-        <p style="margin-top: 1rem;"><a href="https://book.verdiqtech.com/p/demo">See a live example booking page &rarr;</a></p>
-      </div>
-    </section>
-
-    <section id="sms">
-      <h2>Book by text &mdash; SMS program</h2>
-      <p>Verdiq Book's messaging program is the heart of the product. This section describes what we send, how clients opt in and out, and where the program is governed.</p>
-
-      <h3 style="margin-top: 1.5rem; margin-bottom: 0.75rem;">What we send</h3>
-      <p>The program is strictly transactional and conversational. We do not send marketing, promotional, or third-party content through this program.</p>
-      <ul>
-        <li>Booking confirmations when a client requests a service.</li>
-        <li>Appointment reminders 24 hours and 2 hours before each booking.</li>
-        <li>Reschedule and cancellation notices when the provider or client modifies an appointment, including provider-initiated vacation cascades with a magic link to pick a new time.</li>
-        <li>Two-way conversational replies that let clients confirm, reschedule, ask questions about their bookings, or stop messaging.</li>
-      </ul>
-
-      <h3 style="margin-top: 1.5rem; margin-bottom: 0.75rem;">How clients opt in</h3>
-      <p>Clients consent to SMS communication at the point of booking, in one of three ways: by texting the provider's published Verdiq number to initiate a conversation; by submitting their phone number on the provider's public booking page (which displays the consent disclosure above the call-to-action); or by replying <span class="mono">YES</span> to a one-time consent prompt when the provider enters the number on the client's behalf.</p>
-      <p style="margin-top: 0.75rem;"><a href="https://book.verdiqtech.com/p/demo">Reach a live booking page CTA &rarr;</a> (Sample provider for review and demonstration.)</p>
-
-      <h3 style="margin-top: 1.5rem; margin-bottom: 0.75rem;">Consent disclosure</h3>
-      <div class="card">
-        <p style="color: #d8d8d8;">By texting the published booking number or submitting your number on a provider's Verdiq booking page, you agree to receive booking-related SMS from the provider via Verdiq Book. Message frequency is typically 3&ndash;6 messages per booking (confirmation, reminders, and any reschedule or cancellation notices). Message and data rates may apply. Reply <span class="mono">STOP</span>, <span class="mono">UNSUBSCRIBE</span>, <span class="mono">END</span>, <span class="mono">QUIT</span>, or <span class="mono">CANCEL</span> at any time to opt out of future messages. Reply <span class="mono">HELP</span> or <span class="mono">INFO</span> for help. See our <a href="/terms">Terms</a> and <a href="/privacy">Privacy Policy</a>.</p>
-      </div>
-
-      <h3 style="margin-top: 1.5rem; margin-bottom: 0.75rem;">Governing terms</h3>
-      <p>The SMS program is governed by Verdiq's <a href="/terms">Terms of Service</a> and <a href="/privacy">Privacy Policy</a>, both linked below. Questions about the program, opt-out requests, or compliance inquiries can be sent to <a href="mailto:hello@verdiqtech.com">hello@verdiqtech.com</a>.</p>
-    </section>
-
-    <section id="contact">
+    <section>
       <h2>Contact</h2>
-      <p>Verdiq LLC<br>United States<br>Email: <a href="mailto:hello@verdiqtech.com">hello@verdiqtech.com</a></p>
+      <dl>
+        <dt>General</dt>
+        <dd><a href="mailto:hello@verdiqtech.com">hello@verdiqtech.com</a></dd>
+        <dt>Security reports</dt>
+        <dd><a href="mailto:security@verdiqtech.com">security@verdiqtech.com</a> &middot; <a href="/.well-known/security.txt">security.txt</a></dd>
+      </dl>
     </section>
 
-    <footer class="contact">
-      Verdiq LLC &middot; United States<br>
-      Contact: <a href="mailto:hello@verdiqtech.com">hello@verdiqtech.com</a><br>
-      <a href="/privacy">Privacy</a> &middot; <a href="/terms">Terms</a>
+    <footer>
+      <span>&copy; 2026 Verdiq LLC &middot; United States</span>
+      <span><a href="/privacy">Privacy</a></span>
     </footer>
   </main>
 </body>
